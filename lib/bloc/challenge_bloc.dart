@@ -4,14 +4,18 @@ import 'package:bucketlist/bloc/challenge_state.dart';
 
 class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
   @override
-  ChallengeState get initialState => ChallengeState.initial();
+  ChallengeState get initialState => ChallengeState();
 
   @override
   Stream<ChallengeState> mapEventToState(ChallengeEvent event) async* {
     if (event is AddChallengeEvent) {
-      yield state..challengeList.add(event.challenge);
+      yield ChallengeState(state.challengeList..add(event.challenge));
     } else if (event is RemoveChallengeEvent) {
-      yield state..challengeList.remove(event.challenge);
+      yield ChallengeState(state.challengeList.where((c) => c.id != event.challengeId).toList());
+    } else if (event is ToggleChallengeDoneEvent) {
+      final challenge = state.challengeList.firstWhere((c) => c.id == event.challengeId);
+      challenge.done = !challenge.done;
+      yield ChallengeState(state.challengeList);
     }
   }
 

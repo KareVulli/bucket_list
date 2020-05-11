@@ -1,4 +1,5 @@
 import 'package:bucketlist/models/challenge.dart';
+import 'package:flutter/material.dart';
 
 abstract class ChallengeEvent {}
 
@@ -9,7 +10,13 @@ class AddChallengeEvent extends ChallengeEvent {
 }
 
 class RemoveChallengeEvent extends ChallengeEvent {
-  final Challenge challenge;
+  final UniqueKey challengeId;
 
-  RemoveChallengeEvent(this.challenge);
+  RemoveChallengeEvent(this.challengeId);
+}
+
+class ToggleChallengeDoneEvent extends ChallengeEvent {
+  final UniqueKey challengeId;
+
+  ToggleChallengeDoneEvent(this.challengeId);
 }

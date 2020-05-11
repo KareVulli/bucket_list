@@ -6,19 +6,19 @@ class ChallengeRemoveDialog extends StatelessWidget {
   ChallengeRemoveDialog(this._challenge);
   @override
   Widget build(BuildContext context) {
-    return new AlertDialog(
-      title: new Text('Mark "${_challenge.name}" as done?'),
+    // ignore: close_sinks
+    return  AlertDialog(
+      title: Text('Delete challenge "${_challenge.name}"?'),
       actions: <Widget>[
-        new FlatButton(
-            child: new Text('CANCEL'),
-            onPressed: () => Navigator.of(context).pop(false)
+        FlatButton(
+          child: Text('NO'),
+          onPressed: () => Navigator.of(context).pop(false)
         ),
-        new FlatButton(
-            child: new Text('MARK AS DONE'),
-            onPressed: () {
-              //_removeTodoItem(index);
-              Navigator.of(context).pop(true);
-            }
+        FlatButton(
+          child: Text('YES'),
+          onPressed: () {
+            Navigator.of(context).pop(true);
+          }
         )
       ]
     );

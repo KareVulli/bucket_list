@@ -9,12 +9,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ChallengeListScreen extends StatelessWidget {
   void _pushAddTodoScreen(context) {
     Navigator.of(context).push(
-        new MaterialPageRoute(
-            builder: (_) => BlocProvider.value(
-                value: BlocProvider.of<ChallengeBloc>(context),
-                child: AddChallenge()
-            )
+      new MaterialPageRoute(
+        builder: (_) => BlocProvider.value(
+          value: BlocProvider.of<ChallengeBloc>(context),
+          child: AddChallenge()
         )
+      )
     );
   }
 
@@ -22,13 +22,13 @@ class ChallengeListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Todo List')
+        title: Text('Todo List')
       ),
       body: ChallengeList(),
       floatingActionButton: new FloatingActionButton(
-          onPressed: () => _pushAddTodoScreen(context), // pressing this button now opens the new screen
-          tooltip: 'Add task',
-          child: Icon(Icons.add)
+        onPressed: () => _pushAddTodoScreen(context), // pressing this button now opens the new screen
+        tooltip: 'Add task',
+        child: Icon(Icons.add)
       ),
     );
   }
