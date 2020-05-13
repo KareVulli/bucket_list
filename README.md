@@ -1,18 +1,6 @@
 # Bucket List
 A School Flutter project
 
-## Table of Contents (Optional)
-
-- [Installation](#installation)
-- [Features](#features)
-- [Contributing](#contributing)
-- [Team](#team)
-- [FAQ](#faq)
-- [Support](#support)
-- [License](#license)
----
-
-
 ## About this app
 This app "Bucket List" helps to set important life goals and follow them up.
 
