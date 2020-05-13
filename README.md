@@ -1,13 +1,25 @@
-# bucketlist
+# Bucket List
 A School Flutter project
+
+## Table of Contents (Optional)
+
+- [Installation](#installation)
+- [Features](#features)
+- [Contributing](#contributing)
+- [Team](#team)
+- [FAQ](#faq)
+- [Support](#support)
+- [License](#license)
+---
+
 
 ## About this app
 This app "Bucket List" helps to set important life goals and follow them up.
 
-### Authors
+## Authors
 Designed and coded by: Egert Klaamas, Mihkel Vaher, Marvin Helstein, Maksim Jelizarov, Marko Rillo, Liisa Proode. Done in Mobile Application Development course IFI6224.DT of Tallinn University. Supervisor of the course: Roman Gorislavski.
 
-### Development toolset
+## Development toolset
 1. Android Studio version 3.6.1+
 2. Android version 4.1+
 3. Flutter version 1.17.0
@@ -15,19 +27,19 @@ Designed and coded by: Egert Klaamas, Mihkel Vaher, Marvin Helstein, Maksim Jeli
 5. Testing on emulator and real device: Pixel 2 API 28 and Pixel 2 API 29, Android version: 9.0
 6. Figma for design mockups
 
-### Original design
-![Original disain mockups](/docs/Bucket_list_mobile_app_initial_design.png?raw=true)
+## Original design
+![Original design mockups](/docs/Bucket_list_mobile_app_initial_design.png?raw=true)
 
-### Views
+## Views
 TODO: add here the views
 
-### Installation
-Below are steps on how to get a development environment running.
+## Installation
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-#### Clone
+### Clone
 First clone the project, open it in Android Studio and get all required dependencies.
 
-#### Firebase setup
+### Firebase setup
 Since the project is using Firebase Services, we need to set up a project in Firebase.
 Follow the steps below to set up a Firebase project and connect the app with it.
 
@@ -82,21 +94,8 @@ Select whichever location you prefer and click **Done**
 With that, the Firebase setup is complete and you are ready to run the app.
 Make sure your phone is connected to your computer and in Android Studio hit `Shift+F10` to build and run the app.
 
-### Video demonstration
+## Video demonstration
 TODO: add here the demonstration
 
-### Documentation
+## Documentation
 TODO: instructions of use
-
-## Getting Started with Flutter
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
