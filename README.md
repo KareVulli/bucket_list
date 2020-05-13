@@ -5,9 +5,7 @@ A School Flutter project
 This app "Bucket List" helps to set important life goals and follow them up.
 
 ### Authors
-Egert Klaamas, Mihkel Vaher, Marvin Helstein, Maksim Jelizarov, Marko Rillo, Liisa Proode
-Tallinn University, spring 2020: Mobile Application Development course IFI6224.DT
-Supervisor: Roman Gorislavski
+Designed and coded by: Egert Klaamas, Mihkel Vaher, Marvin Helstein, Maksim Jelizarov, Marko Rillo, Liisa Proode. Done in Mobile Application Development course IFI6224.DT of Tallinn University. Supervisor of the course: Roman Gorislavski.
 
 ### Development toolset
 1. Android Studio version 3.6.1+
