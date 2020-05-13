@@ -1,6 +1,6 @@
-import 'package:bucketlist/bloc/challenge_bloc.dart';
-import 'package:bucketlist/bloc/challenge_event.dart';
-import 'package:bucketlist/widgets/challenge_details.dart';
+import 'package:bucketlist/bloc/challenge/challenge_bloc.dart';
+import 'package:bucketlist/bloc/challenge/challenge_actions.dart';
+import 'package:bucketlist/widgets/challenge_list/challenge_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../models/challenge.dart';

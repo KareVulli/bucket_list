@@ -1,15 +1,15 @@
-import 'package:bucketlist/bloc/challenge_bloc.dart';
-import 'package:bucketlist/bloc/challenge_event.dart';
-import 'package:bucketlist/bloc/challenge_state.dart';
-import 'package:bucketlist/widgets/challenge_remove_dialog.dart';
+import 'package:bucketlist/bloc/challenge/challenge_bloc.dart';
+import 'package:bucketlist/bloc/challenge/challenge_actions.dart';
+import 'package:bucketlist/bloc/challenge/challenge_state.dart';
+import 'package:bucketlist/widgets/challenge_list/challenge_remove_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import '../models/challenge.dart';
+import '../../models/challenge.dart';
 
 
 class ChallengeDetails extends StatelessWidget {
-  final UniqueKey _challengeId;
+  final String _challengeId;
 
   ChallengeDetails(this._challengeId);
 
@@ -39,7 +39,7 @@ class ChallengeDetails extends StatelessWidget {
     return BlocBuilder(
       bloc: challengesBloc,
       builder: (BuildContext context, ChallengeState state) {
-        final challenge = state.challengeList.firstWhere((c) => c.id == _challengeId, orElse: () => Challenge());
+        final challenge = state.challengeList.firstWhere((c) => c.uid == _challengeId, orElse: () => Challenge());
         return SimpleDialog(
           title: Text(challenge.name),
           contentPadding: EdgeInsets.all(24),
