@@ -16,7 +16,7 @@ Designed and coded by: Egert Klaamas, Mihkel Vaher, Marvin Helstein, Maksim Jeli
 6. Figma for design mockups
 
 ### Original design
-![Original disain mockups](https://github.com/KareVulli/bucket_list/blob/master/Bucket_list_mobile_app_initial_design.png)
+![Original disain mockups](/docs/Bucket_list_mobile_app_initial_design.png?raw=true)
 
 ### Views
 TODO: add here the views
@@ -38,32 +38,32 @@ You may choose any name you like for the project.
 Once the project is created, we need to connect the app.
 Start by clicking the android button in the Overview page.
 
-![Step1](docs/step1.jpg)
+![Step1](/docs/step1.jpg?raw=true)
 
 Package name is `com.careapps.bucketlist`, nickname is anything you like.
 
 Because the app uses Google Sign-In, we must also set a certificate SHA-1 hash.
 To find it, go back to Android Studio and open the android project inside the flutter app
 
-![Step2](docs/step2.jpg)
+![Step2](/docs/step2.jpg?raw=true)
 
 To find the signing certificate hash, execute the signingReport gradle task
 
-![Step3](docs/step3.jpg)
+![Step3](/docs/step3.jpg?raw=true)
 
 In the output, find the debug cert and copy it's SHA-1 hash and paste it to firebase.
 
-![Step4](docs/step4.jpg)
+![Step4](/docs/step4.jpg?raw=true)
 
 The first step in firebase should look something like this
 
-![Step5](docs/step5.jpg)
+![Step5](/docs/step5.jpg?raw=true)
 
 Click **Register app** and download the `google-services.json` file that's given in the next step.
 
 Open the Flutter app in Android Studio again and place `google-services.json` to `bucket_list/android/app/` folder.
 
-![Step6](docs/step6.jpg)
+![Step6](/docs/step6.jpg?raw=true)
 
 Finish the app setup in Firebase, by pressing **Next** a couple of times.
 
@@ -71,7 +71,7 @@ Next we need to enable Google sign-in and Cloud Firestore.
 Go to **Authentication** and click `Set up sign-in method`.
 Then click on **Google**, enable it, set a support email and save.
 
-![Step7](docs/step7.jpg)
+![Step7](/docs/step7.jpg?raw=true)
 
 Lastly, let's enable Cloud Firestore.
 
