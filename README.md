@@ -21,8 +21,66 @@ Designed and coded by: Egert Klaamas, Mihkel Vaher, Marvin Helstein, Maksim Jeli
 ### Views
 TODO: add here the views
 
-### Installation instructions
-TODO: add how to run
+### Installation
+Below are steps on how to get a development environment running.
+
+#### Clone
+First clone the project, open it in Android Studio and get all required dependencies.
+
+#### Firebase setup
+Since the project is using Firebase Services, we need to set up a project in Firebase.
+Follow the steps below to set up a Firebase project and connect the app with it.
+
+Open [Firebase Console](https://console.firebase.google.com/),
+log in and create a project.
+You may choose any name you like for the project.
+
+Once the project is created, we need to connect the app.
+Start by clicking the android button in the Overview page.
+
+![Step1](docs/step1.jpg)
+
+Package name is `com.careapps.bucketlist`, nickname is anything you like.
+
+Because the app uses Google Sign-In, we must also set a certificate SHA-1 hash.
+To find it, go back to Android Studio and open the android project inside the flutter app
+
+![Step2](docs/step2.jpg)
+
+To find the signing certificate hash, execute the signingReport gradle task
+
+![Step3](docs/step3.jpg)
+
+In the output, find the debug cert and copy it's SHA-1 hash and paste it to firebase.
+
+![Step4](docs/step4.jpg)
+
+The first step in firebase should look something like this
+
+![Step5](docs/step5.jpg)
+
+Click **Register app** and download the `google-services.json` file that's given in the next step.
+
+Open the Flutter app in Android Studio again and place `google-services.json` to `bucket_list/android/app/` folder.
+
+![Step6](docs/step6.jpg)
+
+Finish the app setup in Firebase, by pressing **Next** a couple of times.
+
+Next we need to enable Google sign-in and Cloud Firestore.
+Go to **Authentication** and click `Set up sign-in method`.
+Then click on **Google**, enable it, set a support email and save.
+
+![Step7](docs/step7.jpg)
+
+Lastly, let's enable Cloud Firestore.
+
+Go to **Database** and click **Create database**.
+Select **Start in test mode** and hit **Next**.
+Select whichever location you prefer and click **Done**
+
+With that, the Firebase setup is complete and you are ready to run the app.
+Make sure your phone is connected to your computer and in Android Studio hit `Shift+F10` to build and run the app.
 
 ### Video demonstration
 TODO: add here the demonstration
