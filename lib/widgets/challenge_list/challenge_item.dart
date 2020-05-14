@@ -1,11 +1,11 @@
-import 'package:bucketlist/bloc/challenge_bloc.dart';
-import 'package:bucketlist/bloc/challenge_event.dart';
-import 'package:bucketlist/widgets/challenge_details.dart';
-import 'package:bucketlist/widgets/challenge_remove_dialog.dart';
+import 'package:bucketlist/bloc/challenge/challenge_bloc.dart';
+import 'package:bucketlist/bloc/challenge/challenge_actions.dart';
+import 'package:bucketlist/widgets/challenge_list/challenge_details.dart';
+import 'package:bucketlist/widgets/challenge_list/challenge_remove_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import '../models/challenge.dart';
+import '../../models/challenge.dart';
 
 
 class ChallengeItem extends StatelessWidget {
@@ -18,13 +18,13 @@ class ChallengeItem extends StatelessWidget {
       context: context,
       builder: (_) => BlocProvider.value(
         value: BlocProvider.of<ChallengeBloc>(context),
-        child: ChallengeDetails(_challenge.id)
+        child: ChallengeDetails(_challenge.uid)
       )
     );
     if (result == true) {
       // ignore: close_sinks
       final ChallengeBloc challengeBloc = BlocProvider.of<ChallengeBloc>(context);
-      challengeBloc.add(RemoveChallengeEvent(_challenge.id));
+      challengeBloc.add(RemoveChallengeEvent(_challenge.uid));
     }
   }
 
@@ -39,14 +39,14 @@ class ChallengeItem extends StatelessWidget {
     if (result == true) {
       // ignore: close_sinks
       final ChallengeBloc challengeBloc = BlocProvider.of<ChallengeBloc>(context);
-      challengeBloc.add(RemoveChallengeEvent(_challenge.id));
+      challengeBloc.add(RemoveChallengeEvent(_challenge.uid));
     }
   }
 
   _toggleDone(BuildContext context) async {
     // ignore: close_sinks
     final ChallengeBloc challengeBloc = BlocProvider.of<ChallengeBloc>(context);
-    challengeBloc.add(ToggleChallengeDoneEvent(_challenge.id));
+    challengeBloc.add(ToggleChallengeDoneEvent(_challenge.uid));
   }
 
   @override
