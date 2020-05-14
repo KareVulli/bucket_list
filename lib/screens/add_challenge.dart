@@ -43,10 +43,19 @@ class AddChallengeState extends State<AddChallenge> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromRGBO(51,65,91, 0.4),
       appBar: AppBar(
-          title: Text('New challenge')
+          title: Text('New challenge'),
+          backgroundColor: Color.fromRGBO(51,65,91, 0.4),
+          elevation: 0,
       ),
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: ExactAssetImage("assets/background.jpg"),
+            fit: BoxFit.fill,
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
@@ -55,17 +64,23 @@ class AddChallengeState extends State<AddChallenge> {
                 controller: _nameController,
                 autofocus: true,
                 decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  filled: true,
                   labelText: "Challenge",
                   hintText: 'Title of the challenge',
                 ),
               ),
+              Container(height: 10), // set height
               TextField(
                 controller: _descriptionController,
                 decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  filled: true,
                   labelText: "Description",
                   hintText: 'Write a description',
                 ),
               ),
+              Container(height: 10), // set height
               InkWell(
                 onTap: () {
                   _selectDate();   // Call Function that has showDatePicker()
@@ -73,10 +88,14 @@ class AddChallengeState extends State<AddChallenge> {
                 child: IgnorePointer(
                   child: TextField(
                     controller: _dateTimeController,
-                    decoration: InputDecoration(labelText: 'Due')
+                    decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        labelText: 'Due')
                   ),
                 ),
               ),
+              Container(height: 10), // set height
               RaisedButton(
                 onPressed: () => _addChallenge(),
                 color: Colors.blue,
