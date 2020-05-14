@@ -48,19 +48,9 @@ class AddChallengeState extends State<AddChallenge> {
     _dateTimeController.text = picked.toString();
   }
 
-  void _saveChallenge() {
-    final ChallengeBloc challengeBloc = BlocProvider.of<ChallengeBloc>(context);
-    Challenge challenge = widget.challenge;
-    challenge.name = _nameController.text;
-    challenge.description = _descriptionController.text;
-    challenge.dateTime = _dateTime;
-    challengeBloc.add(AddChallengeEvent(challenge));
-    Navigator.of(context).pop(challenge);
-  }
-
   void _addChallenge() {
     final ChallengeBloc challengeBloc = BlocProvider.of<ChallengeBloc>(context);
-    Challenge challenge = Challenge();
+    Challenge challenge = isEditing ? widget.challenge : Challenge();
     challenge.name = _nameController.text;
     challenge.description = _descriptionController.text;
     challenge.dateTime = _dateTime;

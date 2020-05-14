@@ -82,6 +82,8 @@ Select whichever location you prefer and click **Done**
 With that, the Firebase setup is complete and you are ready to run the app.
 Make sure your phone is connected to your computer and in Android Studio hit `Shift+F10` to build and run the app.
 
+If you get a Cloud Firebase error about requiring an index, follow the link given by the error message.
+
 ## Video demonstration
 TODO: add here the demonstration
 
