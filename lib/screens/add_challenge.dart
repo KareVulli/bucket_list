@@ -1,13 +1,15 @@
 import 'package:bucketlist/bloc/challenge/challenge_bloc.dart';
 import 'package:bucketlist/bloc/challenge/challenge_actions.dart';
-import 'package:bucketlist/widgets/challenge_list/challenge_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../models/challenge.dart';
 
 
 class AddChallenge extends StatefulWidget {
-  AddChallenge();
+  final Challenge challenge;
+
+  AddChallenge([this.challenge]);
+
   @override
   AddChallengeState createState() => AddChallengeState();
 }
@@ -17,6 +19,20 @@ class AddChallengeState extends State<AddChallenge> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _descriptionController = TextEditingController();
   TextEditingController _dateTimeController = TextEditingController();
+
+  bool get isEditing => widget.challenge != null;
+
+  @override
+  void initState() {
+    super.initState();
+    if (isEditing) {
+      Challenge challenge = widget.challenge;
+      _nameController.text = challenge.name;
+      _descriptionController.text = challenge.description;
+      _dateTimeController.text = challenge.dateTime.toString();
+      _dateTime = challenge.dateTime;
+    }
+  }
 
   void _selectDate() async  {
     DateTime current = new DateTime.now();
@@ -32,7 +48,7 @@ class AddChallengeState extends State<AddChallenge> {
 
   void _addChallenge() {
     final ChallengeBloc challengeBloc = BlocProvider.of<ChallengeBloc>(context);
-    Challenge challenge = Challenge();
+    Challenge challenge = isEditing ? widget.challenge : Challenge();
     challenge.name = _nameController.text;
     challenge.description = _descriptionController.text;
     challenge.dateTime = _dateTime;
@@ -45,7 +61,7 @@ class AddChallengeState extends State<AddChallenge> {
     return Scaffold(
         backgroundColor: Color.fromRGBO(51,65,91, 0.4),
       appBar: AppBar(
-          title: Text('New challenge'),
+          title: isEditing ? Text('Edit challenge') : Text('New challenge'),
           backgroundColor: Color.fromRGBO(51,65,91, 0.4),
           elevation: 0,
       ),
@@ -83,7 +99,7 @@ class AddChallengeState extends State<AddChallenge> {
               Container(height: 10), // set height
               InkWell(
                 onTap: () {
-                  _selectDate();   // Call Function that has showDatePicker()
+                  _selectDate();
                 },
                 child: IgnorePointer(
                   child: TextField(
@@ -100,7 +116,7 @@ class AddChallengeState extends State<AddChallenge> {
                 onPressed: () => _addChallenge(),
                 color: Colors.blue,
                 textColor: Colors.white,
-                child: Text('Add Challenge'),
+                child: isEditing ? Text('Save challenge') : Text('Add Challenge'),
               )
             ]
           )
