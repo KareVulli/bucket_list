@@ -9,20 +9,14 @@ class Database {
   Database(this._uid, {Firestore firestore})
       : this._challengeCollection = firestore == null ? Firestore.instance.collection('challenges') : firestore.collection('challenges');
 
-  Future<void> addChallenge(Challenge challenge) async {
-    Map<String, dynamic> json = challenge.toJson();
-    json['userId'] = _uid;
-    return await _challengeCollection.add(json);
-  }
-
-  Future<void> updateChallenge(Challenge challenge) async {
+  Future<void> createOrUpdateChallenge(Challenge challenge) async {
     Map<String, dynamic> json = challenge.toJson();
     json['userId'] = _uid;
     return await _challengeCollection.document(challenge.uid).setData(json);
   }
 
   Stream<List<Challenge>> challenges() {
-    return _challengeCollection.where('userId', isEqualTo: _uid).snapshots()
+    return _challengeCollection.where('userId', isEqualTo: _uid).orderBy('dateTime').snapshots()
       .map((snapshot) {
         return snapshot.documents
             .map((document) => Challenge.fromSnapshot(document))

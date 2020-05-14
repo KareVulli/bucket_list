@@ -1,6 +1,7 @@
 import 'package:bucketlist/bloc/challenge/challenge_bloc.dart';
 import 'package:bucketlist/bloc/challenge/challenge_actions.dart';
 import 'package:bucketlist/bloc/challenge/challenge_state.dart';
+import 'package:bucketlist/screens/add_challenge.dart';
 import 'package:bucketlist/widgets/challenge_list/challenge_remove_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +18,17 @@ class ChallengeDetails extends StatelessWidget {
     // ignore: close_sinks
     final ChallengeBloc challengeBloc = BlocProvider.of<ChallengeBloc>(context);
     challengeBloc.add(ToggleChallengeDoneEvent(_challengeId));
+  }
+
+  _editChallenge(BuildContext context, Challenge challenge) async {
+    Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (_) => BlocProvider.value(
+                value: BlocProvider.of<ChallengeBloc>(context),
+                child: AddChallenge(challenge)
+            )
+        )
+    );
   }
 
   _removeChallenge(BuildContext context, Challenge challenge) async {
@@ -41,7 +53,18 @@ class ChallengeDetails extends StatelessWidget {
       builder: (BuildContext context, ChallengeState state) {
         final challenge = state.challengeList.firstWhere((c) => c.uid == _challengeId, orElse: () => Challenge());
         return SimpleDialog(
-          title: Text(challenge.name),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(challenge.name),
+              InkWell(
+                onTap: () => _editChallenge(context, challenge),
+                child: Icon(
+                  Icons.create,
+                ),
+              ),
+            ],
+          ),
           contentPadding: EdgeInsets.all(24),
           children: [
             Row(

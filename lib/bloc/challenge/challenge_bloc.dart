@@ -22,13 +22,13 @@ class ChallengeBloc extends Bloc<ChallengeAction, ChallengeState> {
           (challenges) => add(ChallengesUpdated(challenges))
       );
     }  else if (event is AddChallengeEvent) {
-      _databaseService.addChallenge(event.challenge);
+      _databaseService.createOrUpdateChallenge(event.challenge);
     } else if (event is RemoveChallengeEvent) {
       _databaseService.deleteChallenge(event.challengeId);
     } else if (event is ToggleChallengeDoneEvent) {
       final challenge = state.challengeList.firstWhere((c) => c.uid == event.challengeId);
       challenge.done = !challenge.done;
-      _databaseService.updateChallenge(challenge);
+      _databaseService.createOrUpdateChallenge(challenge);
     } else if (event is ChallengesUpdated) {
       yield ChallengeState(event.challenges);
     }

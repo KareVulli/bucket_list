@@ -1,13 +1,17 @@
 import 'package:bucketlist/bloc/challenge/challenge_bloc.dart';
 import 'package:bucketlist/bloc/challenge/challenge_actions.dart';
-import 'package:bucketlist/widgets/challenge_list/challenge_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../models/challenge.dart';
 
 
+typedef OnSaveCallback = Function(Challenge challenge);
+
 class AddChallenge extends StatefulWidget {
-  AddChallenge();
+  final Challenge challenge;
+
+  AddChallenge([this.challenge]);
+
   @override
   AddChallengeState createState() => AddChallengeState();
 }
@@ -17,6 +21,20 @@ class AddChallengeState extends State<AddChallenge> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _descriptionController = TextEditingController();
   TextEditingController _dateTimeController = TextEditingController();
+
+  bool get isEditing => widget.challenge != null;
+
+  @override
+  void initState() {
+    super.initState();
+    if (isEditing) {
+      Challenge challenge = widget.challenge;
+      _nameController.text = challenge.name;
+      _descriptionController.text = challenge.description;
+      _dateTimeController.text = challenge.dateTime.toString();
+      _dateTime = challenge.dateTime;
+    }
+  }
 
   void _selectDate() async  {
     DateTime current = new DateTime.now();
@@ -28,6 +46,16 @@ class AddChallengeState extends State<AddChallenge> {
     );
     if(picked != null) setState(() => _dateTime = picked);
     _dateTimeController.text = picked.toString();
+  }
+
+  void _saveChallenge() {
+    final ChallengeBloc challengeBloc = BlocProvider.of<ChallengeBloc>(context);
+    Challenge challenge = widget.challenge;
+    challenge.name = _nameController.text;
+    challenge.description = _descriptionController.text;
+    challenge.dateTime = _dateTime;
+    challengeBloc.add(AddChallengeEvent(challenge));
+    Navigator.of(context).pop(challenge);
   }
 
   void _addChallenge() {
@@ -44,7 +72,7 @@ class AddChallengeState extends State<AddChallenge> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('New challenge')
+          title: isEditing ? Text('Edit challenge') : Text('New challenge')
       ),
       body: Container(
         child: Padding(
@@ -68,7 +96,7 @@ class AddChallengeState extends State<AddChallenge> {
               ),
               InkWell(
                 onTap: () {
-                  _selectDate();   // Call Function that has showDatePicker()
+                  _selectDate();
                 },
                 child: IgnorePointer(
                   child: TextField(
@@ -81,7 +109,7 @@ class AddChallengeState extends State<AddChallenge> {
                 onPressed: () => _addChallenge(),
                 color: Colors.blue,
                 textColor: Colors.white,
-                child: Text('Add Challenge'),
+                child: isEditing ? Text('Save challenge') : Text('Add Challenge'),
               )
             ]
           )
