@@ -27,9 +27,12 @@ class Welcome extends StatelessWidget {
           children: [
             Expanded(
               child: Center(
-                child: Text(
-                  "Welcome to Bucket List",
-                    style: Theme.of(context).textTheme.display1
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 64.0),
+                  child: Text(
+                    "Welcome to Bucket List",
+                    style: Theme.of(context).textTheme.display1.apply(color: Colors.black),
+                  ),
                 ),
               ),
             ),
