@@ -19,7 +19,12 @@ Designed and coded by: Egert Klaamas, Mihkel Vaher, Marvin Helstein, Maksim Jeli
 ![Original design mockups](/docs/Bucket_list_mobile_app_initial_design.png?raw=true)
 
 ## Views
-TODO: add here the views
+![splash](/docs/splash.JPG?raw=true)
+![beforelogin](/docs/beforelogin.JPG?raw=true)
+![login](/docs/login.JPG?raw=true)
+![list](/docs/list.JPG?raw=true)
+![new](/docs/new.JPG?raw=true)
+
 
 ## Installation
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
