@@ -10,10 +10,18 @@ class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromRGBO(51,65,91, 0.4),
       appBar: AppBar(
-          title: Text('Bucket List')
+          title: Text('Bucket List'),
+          backgroundColor: Color.fromRGBO(51,65,91, 0.4),
       ),
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: ExactAssetImage("assets/background.jpg"),
+            fit: BoxFit.fill,
+          ),
+        ),
         padding: EdgeInsets.all(24),
         child: Column(
           children: [

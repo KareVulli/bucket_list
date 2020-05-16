@@ -63,7 +63,6 @@ class AddChallengeState extends State<AddChallenge> {
       appBar: AppBar(
           title: isEditing ? Text('Edit challenge') : Text('New challenge'),
           backgroundColor: Color.fromRGBO(51,65,91, 0.4),
-          elevation: 0,
       ),
       body: Container(
         decoration: BoxDecoration(
