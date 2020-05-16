@@ -26,9 +26,9 @@ class ChallengeListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack( // Stack as the Scaffold parent
+    return Stack(
         children: [
-      Container(
+          Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: ExactAssetImage("assets/background.jpg"),
@@ -37,8 +37,10 @@ class ChallengeListScreen extends StatelessWidget {
             ),
         ),
       Scaffold(
+        backgroundColor: Color.fromRGBO(51,65,91, 0.4),
         appBar: AppBar(
           title: Text('Challenge List'),
+          backgroundColor: Color.fromRGBO(51,65,91, 0.4),
           actions: [
             IconButton(
               icon: Icon(Icons.exit_to_app),
