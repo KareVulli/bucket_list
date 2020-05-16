@@ -2,6 +2,7 @@ import 'package:bucketlist/bloc/challenge/challenge_bloc.dart';
 import 'package:bucketlist/bloc/challenge/challenge_actions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import '../models/challenge.dart';
 
 
@@ -29,21 +30,36 @@ class AddChallengeState extends State<AddChallenge> {
       Challenge challenge = widget.challenge;
       _nameController.text = challenge.name;
       _descriptionController.text = challenge.description;
-      _dateTimeController.text = challenge.dateTime.toString();
+      _dateTimeController.text = DateFormat('dd.MM.yyyy - kk:mm').format(challenge.dateTime);
       _dateTime = challenge.dateTime;
     }
   }
 
   void _selectDate() async  {
-    DateTime current = new DateTime.now();
     DateTime picked = await showDatePicker(
         context: context,
-        initialDate: current,
-        firstDate: current,
+        initialDate: _dateTime,
+        firstDate: DateTime(2000),
         lastDate: DateTime(2101)
     );
-    if(picked != null) setState(() => _dateTime = picked);
-    _dateTimeController.text = picked.toString();
+    if (picked == null) {
+      return;
+    }
+    TimeOfDay pickedTime = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.fromDateTime(_dateTime)
+    );
+    if(picked != null && pickedTime != null) {
+      DateTime newDateTime = _setTime(picked, pickedTime);
+      setState(() => _dateTime = newDateTime);
+      _dateTimeController.text = DateFormat('dd.MM.yyyy - kk:mm').format(newDateTime);
+    }
+  }
+
+  DateTime _setTime(DateTime dateTime, TimeOfDay timeOfDay){
+    return DateTime(
+        dateTime.year, dateTime.month, dateTime.day, timeOfDay.hour, timeOfDay.minute
+    );
   }
 
   void _addChallenge() {
