@@ -90,7 +90,4 @@ Make sure your phone is connected to your computer and in Android Studio hit `Sh
 If you get a Cloud Firebase error about requiring an index, follow the link given by the error message.
 
 ## Video demonstration
-TODO: add here the demonstration
-
-## Documentation
-TODO: instructions of use
+https://youtu.be/UZQaSJeVsnc
